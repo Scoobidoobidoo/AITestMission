@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Testronaut Report – run_1763605669591</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* ===== Brand + surface tokens (match splash/app) ===== */
+    :root{
+      --bg-top:#0b1022;
+      --bg-mid:#0f172a;
+      --bg-btm:#0b1022;
+
+      --hairline:rgba(255,255,255,.12);
+      --hairline-strong:rgba(255,255,255,.18);
+
+      --text:rgba(255,255,255,.92);
+      --text-muted:rgba(255,255,255,.65);
+
+      --ok:#22c55e;     /* green-500 */
+      --bad:#ef4444;    /* red-500 */
+
+      --chip-ok-bg:rgba(34,197,94,.14);
+      --chip-bad-bg:rgba(239,68,68,.16);
+      --chip-border:rgba(255,255,255,.22);
+      --chip-ok-border:rgba(34,197,94,.40);
+      --chip-bad-border:rgba(239,68,68,.45);
+    }
+
+    /* ===== Base ===== */
+    html,body{height:100%;}
+    body{
+      margin:0; padding:24px;
+      font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial;
+      background: linear-gradient(180deg,var(--bg-top) 0%,var(--bg-mid) 60%,var(--bg-btm) 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== Utilities ===== */
+    .gradient-text{
+      background: linear-gradient(90deg,#60a5fa,#a78bfa,#34d399);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .glass{
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--hairline);
+      border-radius:16px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(59,130,246,.20);
+    }
+
+    /* ===== Header ===== */
+    .header{ max-width:960px; margin:0 auto 16px; padding:16px 18px; }
+    h1{ margin:0 0 6px; font-size:22px; font-weight:800; color:#fff; }
+    .run-meta{ color:var(--text-muted); display:grid; gap:4px; }
+
+    /* ===== Chips ===== */
+    .summary{ display:flex; flex-wrap:wrap; gap:12px; margin:16px auto 20px; max-width:960px; }
+    .pill{
+      border:1px solid var(--chip-border);
+      background: rgba(255,255,255,.06);
+      padding:6px 12px; border-radius:999px; font-size:12px; color:var(--text);
+      letter-spacing:.2px;
+    }
+    .pill.ok{ background: var(--chip-ok-bg); color: var(--ok); border-color: var(--chip-ok-border); font-weight:700; }
+    .pill.bad{ background: var(--chip-bad-bg); color: var(--bad); border-color: var(--chip-bad-border); font-weight:700; }
+
+    /* ===== Disclosure blocks ===== */
+    details{ background: rgba(255,255,255,.05); border:1px solid var(--hairline); border-radius:16px; margin:10px 0; overflow:hidden; }
+    summary{
+      cursor:pointer; padding:14px 16px; display:flex; align-items:center; gap:12px;
+      color:#fff; background: rgba(255,255,255,.04);
+    }
+    .mission-group > summary{ font-weight:800; font-size:15px; letter-spacing:.2px; }
+    .mission-group > summary:hover{ background: rgba(255,255,255,.08); }
+
+    .group-body{ padding:12px; display:grid; gap:10px; }
+    // .toolbar{display:flex; gap:8px; margin-left:auto;}
+    // .btn-mini{
+    //   font-size:11px; padding:4px 8px; border-radius:8px;
+    //   background: rgba(255,255,255,.06); color: var(--text);
+    //   border:1px solid var(--hairline); cursor:pointer;
+    // }
+    // .btn-mini:hover{ background: rgba(255,255,255,.10); }
+
+    .toolbar{display:flex; gap:8px; margin-left:auto;}
+    .btn-mini{
+      font-size:12px; padding:2px 8px; border-radius:8px;
+      background: rgba(255,255,255,.06); color: var(--text);
+      border:1px solid var(--hairline); cursor:pointer; line-height:1.2;
+      width:28px; text-align:center;
+    }
+    .btn-mini:hover{ background: rgba(255,255,255,.10); }
+
+    .mission-submission > summary{
+      font-weight:700; background: rgba(255,255,255,.06); border-top:1px solid var(--hairline);
+    }
+    .mission-submission > summary:hover{ background: rgba(255,255,255,.08); }
+
+    .name{ flex:1; }
+    .status.ok{ color: var(--ok); font-weight:700; }
+    .status.bad{ color: var(--bad); font-weight:700; }
+    .meta{ color: var(--text-muted); font-size:12px; }
+
+    .steps{ padding: 0 12px 12px; }
+    .step summary{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--hairline);
+      border-radius:12px;
+    }
+    .step summary:hover{ background: rgba(255,255,255,.08); }
+
+    .turn{ font-weight:700; }
+    .plan{
+      flex:1; color: var(--text-muted); font-size:12px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .step-result.ok{ color: var(--ok); font-weight:700; }
+    .step-result.bad{ color: var(--bad); font-weight:700; }
+    .tokens{ color: var(--text-muted); font-size:12px; margin-left:auto; font-variant-numeric: tabular-nums; }
+
+    .events{
+      background: rgba(2,6,23,.9); /* near #020617 */
+      color: rgba(255,255,255,.92);
+      padding:12px; border-radius:12px; margin:12px 0 0;
+      font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New";
+      max-height:320px; overflow:auto; white-space:pre-wrap;
+      border: 1px solid var(--hairline-strong);
+    }
+
+    img{
+      display:block; max-width:100%;
+      border:1px solid var(--hairline); border-radius:12px; margin-top:10px;
+      background: rgba(0,0,0,.2);
+    }
+
+    /* container width */
+    .container{ max-width:960px; margin:0 auto; }
+    .empty{ color: var(--text-muted); padding:12px; }
+  </style>
+</head>
+<body>
+  <div class="header glass">
+    <h1>🧑‍🚀 <span class="gradient-text">Testronaut Report</span></h1>
+    <div class="run-meta">
+      <div><strong>Run ID:</strong> run_1763605669591</div>
+      <div><strong>Start:</strong> 2025-11-20T02:27:49.591Z</div>
+      <div><strong>End:</strong> 2025-11-20T02:27:49.689Z • <strong>Duration:</strong> 0.10s</div>
+      <div><strong>LLM:</strong> openai • <strong>Model:</strong> gpt-5.1</div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="pill">Missions: 0</div>
+    <div class="pill ok">Passed: 0</div>
+    <div class="pill bad">Failed: 0</div>
+    <div class="pill">LLM: openai • gpt-5.1</div>
+  </div>
+
+  <div class="container">
+    <div class="glass empty">No missions recorded.</div>
+  </div>
+  <script>
+  (function () {
+    function setOpenAll(root, selector, open) {
+      root.querySelectorAll(selector).forEach(function (el) {
+        if (el && 'open' in el) el.open = open;
+      });
+    }
+    function areAllOpen(root, selector) {
+      var list = root.querySelectorAll(selector);
+      if (!list.length) return false;
+      for (var i=0;i<list.length;i++) { if (!list[i].open) return false; }
+      return true;
+    }
+    function refreshBtn(btn) {
+      var scope = btn.getAttribute('data-scope');
+      var root = btn.closest(scope === 'mission' ? '.mission-group' : '.mission-submission');
+      if (!root) return;
+      var allOpen = scope === 'mission'
+        ? (areAllOpen(root, '.mission-submission') && areAllOpen(root, '.mission-submission .step'))
+        : areAllOpen(root, '.step');
+      btn.textContent = allOpen ? '▲' : '▼';
+      btn.setAttribute('aria-label', allOpen ? 'Collapse' : 'Expand');
+      btn.dataset.open = allOpen ? 'true' : 'false';
+    }
+
+    // Click handler (single toggle)
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest && e.target.closest('button.toggle');
+      if (!btn) return;
+      e.preventDefault(); e.stopPropagation();
+
+      var scope = btn.getAttribute('data-scope');
+      var root = btn.closest(scope === 'mission' ? '.mission-group' : '.mission-submission');
+      if (!root) return;
+
+      var currentlyOpen = btn.dataset.open === 'true';
+      var nextOpen = !currentlyOpen;
+
+      if (scope === 'mission') {
+        root.open = true; // ensure visible
+        setOpenAll(root, '.mission-submission', nextOpen);
+        setOpenAll(root, '.mission-submission .step', nextOpen);
+      } else {
+        root.open = true;
+        setOpenAll(root, '.step', nextOpen);
+      }
+      refreshBtn(btn);
+    }, true);
+
+    // Keep arrows in sync if user toggles details manually
+    document.addEventListener('toggle', function () {
+      document.querySelectorAll('button.toggle').forEach(refreshBtn);
+    }, true);
+
+    // Initial refresh
+    document.querySelectorAll('button.toggle').forEach(refreshBtn);
+  })();
+  </script>
+
+
+</body>
+</html>

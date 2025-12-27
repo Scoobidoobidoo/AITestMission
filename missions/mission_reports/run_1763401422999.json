@@ -1,0 +1,37 @@
+{
+  "runId": "run_1763401422999",
+  "startTime": "2025-11-17T17:43:42.999Z",
+  "endTime": "2025-11-17T17:46:00.841Z",
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-5.1"
+  },
+  "summary": {
+    "totalMissions": 1,
+    "passed": 1,
+    "failed": 0
+  },
+  "missions": [
+    {
+      "missionName": "Welcome Mission!",
+      "submissionType": "mission",
+      "submissionName": "Welcome Mission!",
+      "status": "passed",
+      "steps": [
+        {
+          "turn": 0,
+          "summary": "Manual confirmation fallback",
+          "events": [
+            "LLM automation unavailable due to rate limit/timeouts.",
+            "Rate limit detected while contacting the LLM provider.",
+            "Manual fallback marked this welcome mission as SUCCESS so you can continue onboarding."
+          ],
+          "result": "✅ Success"
+        }
+      ],
+      "startTime": 1763401560841,
+      "endTime": 1763401560841,
+      "file": "welcome.mission.js"
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "runId": "run_1763606039930",
+  "startTime": "2025-11-20T02:33:59.930Z",
+  "endTime": "2025-11-20T02:35:14.315Z",
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-5.1"
+  },
+  "summary": {
+    "totalMissions": 2,
+    "passed": 2,
+    "failed": 0
+  },
+  "missions": [
+    {
+      "missionName": "Create Task Mission!",
+      "submissionType": "premission",
+      "submissionName": "pre-1",
+      "status": "passed",
+      "steps": [
+        {
+          "turn": 0,
+          "events": [
+            "📝 Plan: Navigate to https://demo.testronaut.app/",
+            "[model] → navigate [object Object]",
+            "[tool ] ← navigate result: ✅ Success",
+            "[tool ] ← navigated to https://demo.testronaut.app/"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 1116,
+          "totalTokensUsed": 1116,
+          "summary": "🧭 Navigate to https://demo.testronaut.app/",
+          "__recorded": true
+        },
+        {
+          "turn": 1,
+          "events": [
+            "📝 Plan: Capture screenshot → Inspect DOM (focused extract)",
+            "[model] → screenshot [object Object]",
+            "[tool ] ← screenshot result: ✅ Success",
+            "[tool ] ← Screenshot saved at: ./screenshots/screenshot_2025-11-20T02-34-17-047Z.png",
+            "🖼️ Screenshot captured: ./screenshots/screenshot_2025-11-20T02-34-17-047Z.png",
+            "[model] → get_dom [object Object]",
+            "[tool ] ← get_dom result: ✅ Success",
+            "[tool ] ← <!DOCTYPE html><html><head>\n    \n    \n    \n    <title>Testronaut: Crew Simulation</title>\n    \n    \n  </head>\n  <body>\n    <div id=\"root\"><div class=\"min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900 via-[#0b0e1a] to-black text-white\"><div class=\"sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/5 bg-black/30 border-b border-white/10\"><div class=\"mx-auto max-w-5xl px-4 py-3 flex items-center justify-between\"><div class=\"flex items-center gap-3\"><div aria-label=\"Testronaut helmet\" class=\"relative h-7 w-7\"><div class=\"absolute inset-0 rounded-full bg-gradient-to-tr from-sky-400/70 to-fuchsia-400/70 blur-sm\"></div><div class=\"absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500 to-fuchsia-500\"></div><div class=\"absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/60\"></div></div><span class=\"font-semibold tracking-wide\">🧑‍🚀 Testronaut: Crew Simulation</span></div><div class=\"text-xs …"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 1185,
+          "totalTokensUsed": 2301,
+          "summary": "📸 Capture screenshot → 🧩 Inspect DOM (focused extract)",
+          "screenshotPath": "./screenshots/screenshot_2025-11-20T02-34-17-047Z.png",
+          "__recorded": true
+        },
+        {
+          "turn": 2,
+          "events": [
+            "📝 Plan: Type \"Buzz\" into #username",
+            "[model] → fill [object Object]",
+            "[tool ] ← fill result: ✅ Success",
+            "[tool ] ← filled via fill"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 2058,
+          "totalTokensUsed": 4359,
+          "summary": "⌨️ Type \"Buzz\" into #username",
+          "__recorded": true
+        },
+        {
+          "turn": 3,
+          "events": [
+            "📝 Plan: Type \"•••••• (9)\" into #access",
+            "[model] → fill [object Object]",
+            "[tool ] ← fill result: ✅ Success",
+            "[tool ] ← filled via fill"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 2093,
+          "totalTokensUsed": 6452,
+          "summary": "⌨️ Type \"•••••• (9)\" into #access",
+          "__recorded": true
+        },
+        {
+          "turn": 4,
+          "events": [
+            "📝 Plan: Click element (#login-submit)",
+            "[model] → click [object Object]",
+            "[tool ] ← click result: ✅ Success",
+            "[tool ] ← clicked <locator>",
+            "[auto] → Injecting DOM after click...",
+            "[auto] → DOM size after click: 6217 chars"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 2135,
+          "totalTokensUsed": 8587,
+          "summary": "🖱️ Click element (#login-submit)",
+          "__recorded": true
+        },
+        {
+          "turn": 5,
+          "events": [
+            "📝 Plan: Capture screenshot → Check page for \"Logout\"",
+            "[model] → screenshot [object Object]",
+            "[tool ] ← screenshot result: ✅ Success",
+            "[tool ] ← Screenshot saved at: ./screenshots/screenshot_2025-11-20T02-35-08-228Z.png",
+            "🖼️ Screenshot captured: ./screenshots/screenshot_2025-11-20T02-35-08-228Z.png",
+            "[model] → check_text [object Object]",
+            "[tool ] ← check_text result: ✅ Success",
+            "[tool ] ← FOUND: Logout"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 4035,
+          "totalTokensUsed": 11506,
+          "summary": "📸 Capture screenshot → 🔍 Check page for \"Logout\"",
+          "screenshotPath": "./screenshots/screenshot_2025-11-20T02-35-08-228Z.png",
+          "__recorded": true
+        },
+        {
+          "turn": 6,
+          "events": [
+            "📝 Plan: Capture screenshot",
+            "[model] → screenshot [object Object]",
+            "[tool ] ← screenshot result: ✅ Success",
+            "[tool ] ← Screenshot saved at: ./screenshots/screenshot_2025-11-20T02-35-09-899Z.png",
+            "🖼️ Screenshot captured: ./screenshots/screenshot_2025-11-20T02-35-09-899Z.png"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 4101,
+          "totalTokensUsed": 15607,
+          "summary": "📸 Capture screenshot",
+          "screenshotPath": "./screenshots/screenshot_2025-11-20T02-35-09-899Z.png",
+          "__recorded": true
+        },
+        {
+          "turn": 7,
+          "events": [
+            "📝 Plan: Reasoning: SUCCESS",
+            "SUCCESS"
+          ],
+          "result": "✅ Mission Success",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 4142,
+          "totalTokensUsed": 19749,
+          "summary": "Reasoning: SUCCESS",
+          "__recorded": true
+        }
+      ],
+      "stepFile": "/Users/natalie/Desktop/Cursor/missions/tmp/Create_Task_Mission__1763606040755_steps.jsonl",
+      "startTime": 1763606111421,
+      "endTime": 1763606111422,
+      "file": "createTask.mission.js"
+    },
+    {
+      "missionName": "Create Task Mission!",
+      "submissionType": "mission",
+      "submissionName": "Create Task Mission!",
+      "status": "passed",
+      "steps": [
+        {
+          "turn": 0,
+          "events": [
+            "📝 Plan: Navigate to https://missions.remoteli.io",
+            "[model] → navigate [object Object]",
+            "[tool ] ← navigate result: ❌ Failed",
+            "[tool ] ← ERROR: page.goto: net::ERR_NAME_NOT_RESOLVED at https://missions.remoteli.io/\nCall log:\n\u001b[2m  - navigating to \"https://missions.remoteli.io/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 1066,
+          "totalTokensUsed": 20815,
+          "summary": "🧭 Navigate to https://missions.remoteli.io",
+          "__recorded": true
+        },
+        {
+          "turn": 1,
+          "events": [
+            "📝 Plan: Reasoning: FAILURE: I was unable to reach the missions.remoteli.io sit…ould not create the task or take the requested screenshots.",
+            "FAILURE: I was unable to reach the missions.remoteli.io site due to a network/DNS error (`ERR_NAME_NOT_RESOLVED`), so I could not create the task or take the requested screenshots."
+          ],
+          "result": "❌ Mission Failure",
+          "missionName": "Create Task Mission!",
+          "tokensUsed": 1171,
+          "totalTokensUsed": 21986,
+          "summary": "Reasoning: FAILURE: I was unable to reach the missions.remoteli.io sit…ould not create the task or take the requested screenshots.",
+          "__recorded": true
+        }
+      ],
+      "stepFile": "/Users/natalie/Desktop/Cursor/missions/tmp/Create_Task_Mission__1763606111423_steps.jsonl",
+      "startTime": 1763606114288,
+      "endTime": 1763606114289,
+      "file": "createTask.mission.js"
+    }
+  ]
+}

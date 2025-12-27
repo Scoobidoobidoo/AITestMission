@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Testronaut Report – run_1763607531570</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* ===== Brand + surface tokens (match splash/app) ===== */
+    :root{
+      --bg-top:#0b1022;
+      --bg-mid:#0f172a;
+      --bg-btm:#0b1022;
+
+      --hairline:rgba(255,255,255,.12);
+      --hairline-strong:rgba(255,255,255,.18);
+
+      --text:rgba(255,255,255,.92);
+      --text-muted:rgba(255,255,255,.65);
+
+      --ok:#22c55e;     /* green-500 */
+      --bad:#ef4444;    /* red-500 */
+
+      --chip-ok-bg:rgba(34,197,94,.14);
+      --chip-bad-bg:rgba(239,68,68,.16);
+      --chip-border:rgba(255,255,255,.22);
+      --chip-ok-border:rgba(34,197,94,.40);
+      --chip-bad-border:rgba(239,68,68,.45);
+    }
+
+    /* ===== Base ===== */
+    html,body{height:100%;}
+    body{
+      margin:0; padding:24px;
+      font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial;
+      background: linear-gradient(180deg,var(--bg-top) 0%,var(--bg-mid) 60%,var(--bg-btm) 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== Utilities ===== */
+    .gradient-text{
+      background: linear-gradient(90deg,#60a5fa,#a78bfa,#34d399);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .glass{
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--hairline);
+      border-radius:16px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(59,130,246,.20);
+    }
+
+    /* ===== Header ===== */
+    .header{ max-width:960px; margin:0 auto 16px; padding:16px 18px; }
+    h1{ margin:0 0 6px; font-size:22px; font-weight:800; color:#fff; }
+    .run-meta{ color:var(--text-muted); display:grid; gap:4px; }
+
+    /* ===== Chips ===== */
+    .summary{ display:flex; flex-wrap:wrap; gap:12px; margin:16px auto 20px; max-width:960px; }
+    .pill{
+      border:1px solid var(--chip-border);
+      background: rgba(255,255,255,.06);
+      padding:6px 12px; border-radius:999px; font-size:12px; color:var(--text);
+      letter-spacing:.2px;
+    }
+    .pill.ok{ background: var(--chip-ok-bg); color: var(--ok); border-color: var(--chip-ok-border); font-weight:700; }
+    .pill.bad{ background: var(--chip-bad-bg); color: var(--bad); border-color: var(--chip-bad-border); font-weight:700; }
+
+    /* ===== Disclosure blocks ===== */
+    details{ background: rgba(255,255,255,.05); border:1px solid var(--hairline); border-radius:16px; margin:10px 0; overflow:hidden; }
+    summary{
+      cursor:pointer; padding:14px 16px; display:flex; align-items:center; gap:12px;
+      color:#fff; background: rgba(255,255,255,.04);
+    }
+    .mission-group > summary{ font-weight:800; font-size:15px; letter-spacing:.2px; }
+    .mission-group > summary:hover{ background: rgba(255,255,255,.08); }
+
+    .group-body{ padding:12px; display:grid; gap:10px; }
+    // .toolbar{display:flex; gap:8px; margin-left:auto;}
+    // .btn-mini{
+    //   font-size:11px; padding:4px 8px; border-radius:8px;
+    //   background: rgba(255,255,255,.06); color: var(--text);
+    //   border:1px solid var(--hairline); cursor:pointer;
+    // }
+    // .btn-mini:hover{ background: rgba(255,255,255,.10); }
+
+    .toolbar{display:flex; gap:8px; margin-left:auto;}
+    .btn-mini{
+      font-size:12px; padding:2px 8px; border-radius:8px;
+      background: rgba(255,255,255,.06); color: var(--text);
+      border:1px solid var(--hairline); cursor:pointer; line-height:1.2;
+      width:28px; text-align:center;
+    }
+    .btn-mini:hover{ background: rgba(255,255,255,.10); }
+
+    .mission-submission > summary{
+      font-weight:700; background: rgba(255,255,255,.06); border-top:1px solid var(--hairline);
+    }
+    .mission-submission > summary:hover{ background: rgba(255,255,255,.08); }
+
+    .name{ flex:1; }
+    .status.ok{ color: var(--ok); font-weight:700; }
+    .status.bad{ color: var(--bad); font-weight:700; }
+    .meta{ color: var(--text-muted); font-size:12px; }
+
+    .steps{ padding: 0 12px 12px; }
+    .step summary{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--hairline);
+      border-radius:12px;
+    }
+    .step summary:hover{ background: rgba(255,255,255,.08); }
+
+    .turn{ font-weight:700; }
+    .plan{
+      flex:1; color: var(--text-muted); font-size:12px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .step-result.ok{ color: var(--ok); font-weight:700; }
+    .step-result.bad{ color: var(--bad); font-weight:700; }
+    .tokens{ color: var(--text-muted); font-size:12px; margin-left:auto; font-variant-numeric: tabular-nums; }
+
+    .events{
+      background: rgba(2,6,23,.9); /* near #020617 */
+      color: rgba(255,255,255,.92);
+      padding:12px; border-radius:12px; margin:12px 0 0;
+      font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New";
+      max-height:320px; overflow:auto; white-space:pre-wrap;
+      border: 1px solid var(--hairline-strong);
+    }
+
+    img{
+      display:block; max-width:100%;
+      border:1px solid var(--hairline); border-radius:12px; margin-top:10px;
+      background: rgba(0,0,0,.2);
+    }
+
+    /* container width */
+    .container{ max-width:960px; margin:0 auto; }
+    .empty{ color: var(--text-muted); padding:12px; }
+  </style>
+</head>
+<body>
+  <div class="header glass">
+    <h1>🧑‍🚀 <span class="gradient-text">Testronaut Report</span></h1>
+    <div class="run-meta">
+      <div><strong>Run ID:</strong> run_1763607531570</div>
+      <div><strong>Start:</strong> 2025-11-20T02:58:51.570Z</div>
+      <div><strong>End:</strong> 2025-11-20T02:59:52.945Z • <strong>Duration:</strong> 61.38s</div>
+      <div><strong>LLM:</strong> openai • <strong>Model:</strong> gpt-5.1</div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="pill">Missions: 1</div>
+    <div class="pill ok">Passed: 0</div>
+    <div class="pill bad">Failed: 1</div>
+    <div class="pill">LLM: openai • gpt-5.1</div>
+  </div>
+
+  <div class="container">
+    
+      <details class="mission-group">
+        <summary>
+          <span class="name">Welcome Mission!</span>
+          <span class="status bad">❌ Failed</span>
+          <span class="meta">submissions: 1 • steps: 8 • duration: 0.00s</span>
+          <span class="toolbar">
+            <button class="btn-mini toggle" data-scope="mission" aria-label="Expand">▼</button>
+          </span>
+        </summary>
+        <div class="group-body">
+          
+      <details class="mission-submission">
+        <summary>
+          <span class="name">Welcome Mission! — mission: Welcome Mission!</span>
+          <span class="status bad">❌ Failed</span>
+          <span class="meta">steps: 8 • duration: 0.00s</span>
+          <span class="toolbar">
+            <button class="btn-mini toggle" data-scope="submission" aria-label="Expand">▼</button>
+          </span>
+        </summary>
+        <div class="steps">
+          
+        <details class="step" >
+          <summary>
+            <span class="turn">Turn 1</span>
+            <span class="plan" title="🧭 Navigate to https://itrak365qa.azurewebsites.net">🧭 Navigate to https://itrak365qa.azurewebsites.net</span>
+            <span class="step-result ok">✅ Passed</span>
+            <span class="tokens">tokens: 1102 / total: 1102</span>
+          </summary>
+          <pre class="events">📝 Plan: Navigate to https://itrak365qa.azurewebsites.net
+[model] → navigate [object Object]
+[tool ] ← navigate result: ✅ Success
+[tool ] ← navigated to https://login.microsoftonline.com/51062816-7ac1-4f6b-958b-2a1c84460feb/oauth2/authorize?client_id=bd14cf77-9779-4db2-8ce6-c431dbe0dd82&amp;response_type=code%20id_token&amp;scope=openid%20profile&amp;state=OpenIdConnect.AuthenticationProperties%3D146-7XLv4gEDsKleRi17p-ZF6sbTHphm2sdgVrjDWj8mrPwoENMZG4VxQihErEQxXG7TXIVQ6BexMbjM9smiKi1DFMTlEnhScWs25BN6c346Y1mDdDLDwE-Ub9GP0QTo&amp;response_mode=form_post&amp;nonce=638992043344731541.MmZhNTkzNGEtNTllZC00NWZjLWE2OGMtOTA2NjA3NDhjNmYyMTBkOTAxY2YtMmRjZS00MzE2LWIyNjYtMTBmZTJjODUzMmZk&amp;redirect_uri=https%3A%2F%2Fitrak365qa.azurewebsites.net%2F&amp;x-client-SKU=ID_NET472&amp;x-client-ver=8.2.1.0&amp;sso_reload=true</pre>
+          
+        </details>
+      
+        <details class="step" >
+          <summary>
+            <span class="turn">Turn 2</span>
+            <span class="plan" title="⌨️ Type &quot;nataliya.datsyuk@itrak365.net&quot; into input[type='email']">⌨️ Type "nataliya.datsyuk@itrak365.net" into input[type='email']</span>
+            <span class="step-result ok">✅ Passed</span>
+            <span class="tokens">tokens: 1442 / total: 2544</span>
+          </summary>
+          <pre class="events">📝 Plan: Type "nataliya.datsyuk@itrak365.net" into input[type='email']
+[model] → fill [object Object]
+[tool ] ← fill result: ✅ Success
+[tool ] ← filled via fill</pre>
+          
+        </details>
+      
+        <details class="step" >
+          <summary>
+            <span class="turn">Turn 3</span>
+            <span class="plan" title="🖱️ Click element (input[type='submit'])">🖱️ Click element (input[type='submit'])</span>
+            <span class="step-result ok">✅ Passed</span>
+            <span class="tokens">tokens: 1486 / total: 4030</span>
+          </summary>
+          <pre class="events">📝 Plan: Click element (input[type='submit'])
+[model] → click [object Object]
+[tool ] ← click result: ✅ Success
+[tool ] ← clicked &lt;input type="submit" id="idSIButton9" class="win-button button_primary high-cont
+[auto] → Injecting DOM after click...
+[auto] → DOM size after click: 9116 chars</pre>
+          
+        </details>
+      
+        <details class="step" >
+          <summary>
+            <span class="turn">Turn 4</span>
+            <span class="plan" title="⌨️ Type &quot;•••••• (8)&quot; into input[type='password']">⌨️ Type "•••••• (8)" into input[type='password']</span>
+            <span class="step-result ok">✅ Passed</span>
+            <span class="tokens">tokens: 4257 / total: 8287</span>
+          </summary>
+          <pre class="events">📝 Plan: Type "•••••• (8)" into input[type='password']
+[model] → fill [object Object]
+[tool ] ← fill result: ✅ Success
+[tool ] ← filled via fill</pre>
+          
+        </details>
+      
+        <details class="step" >
+          <summary>
+            <span class="turn">Turn 5</span>
+            <span class="plan" title="🖱️ Click element (input[type='submit']#idSIButton9)">🖱️ Click element (input[type='submit']#idSIButton9)</span>
+            <span class="step-result ok">✅ Passed</span>
+            <span class="tokens">tokens: 4306 / total: 12593</span>
+          </summary>
+          <pre class="events">📝 Plan: Click element (input[type='submit']#idSIButton9)
+[model] → click [object Object]
+[tool ] ← click result: ✅ Success
+[tool ] ← clicked &lt;input type="submit" id="idSIButton9" class="win-button button_primary high-cont
+[auto] → Injecting DOM after click...
+[auto] → DOM size after click: 9116 chars</pre>
+          
+        </details>
+      
+        <details class="step" >
+          <summary>
+            <span class="turn">Turn 6</span>
+            <span class="plan" title="🧩 Inspect DOM (focused extract)">🧩 Inspect DOM (focused extract)</span>
+            <span class="step-result ok">✅ Passed</span>
+            <span class="tokens">tokens: 7073 / total: 19666</span>
+          </summary>
+          <pre class="events">📝 Plan: Inspect DOM (focused extract)
+[model] → get_dom [object Object]
+[tool ] ← get_dom result: ✅ Success
+[tool ] ← &lt;!DOCTYPE html&gt;&lt;html class=""&gt;&lt;head&gt;
+    &lt;title&gt;Sign in to your account&lt;/title&gt;
+    
+    
+    
+    
+    
+    
+
+
+
+
+    
+    
+    
+    
+
+
+        
+
+    
+
+    
+    
+
+
+ 
+ 
+
+
+    
+        
+                
+
+    
+
+
+    
+    
+
+
+    
+
+    
+
+
+
+&lt;/head&gt;
+
+&lt;body class="cb"&gt;
+    
+    
+
+&lt;div&gt;
+
+
+
+&lt;div&gt;&lt;/div&gt;
+
+&lt;form name="f1" id="i0281" class="provide-min-height"&gt;
+    
+    &lt;div class="login-paginated-page"&gt;
+
+
+
+
+    
+        
+        &lt;div id="lightboxTemplateContainer" class="provide-min-height"&gt;
+
+&lt;div id="lightboxBackgroundContainer"&gt;&lt;div class="background-image-holder"&gt;
+    
+
+    
+    &lt;div id="backgroundImage" class="background-image ext-background-image" aria-label="Organization background image"&gt;&lt;/div&gt;
+        
+    
+&lt;/div&gt;&lt;/div&gt;
+
+
+
+
+&lt;div class="outer"&gt;
+    
+
+    &lt;div class="template-section main-section"&gt;
+        &lt;div class="middle ext-middle"&gt;
+            &lt;div class="full-height"&gt;
+
+
+&lt;div class="flex-column"&gt;
+    
+
+    
+
+    &lt;div class="win-scroll"&gt;
+        &lt;div id="lightbox" class="sign-in-box ext-…</pre>
+          
+        </details>
+      
+        <details class="step" >
+          <summary>
+            <span class="turn">Turn 7</span>
+            <span class="plan" title="📸 Capture screenshot">📸 Capture screenshot</span>
+            <span class="step-result ok">✅ Passed</span>
+            <span class="tokens">tokens: 9782 / total: 29448</span>
+          </summary>
+          <pre class="events">📝 Plan: Capture screenshot
+[model] → screenshot [object Object]
+[tool ] ← screenshot result: ✅ Success
+[tool ] ← Screenshot saved at: ./screenshots/screenshot_2025-11-20T02-59-51-781Z.png
+🖼️ Screenshot captured: ./screenshots/screenshot_2025-11-20T02-59-51-781Z.png</pre>
+          <img src="./screenshots/screenshot_2025-11-20T02-59-51-781Z.png" alt="screenshot turn 6">
+        </details>
+      
+        <details class="step" open>
+          <summary>
+            <span class="turn">Turn 8</span>
+            <span class="plan" title="Reasoning: FAILURE">Reasoning: FAILURE</span>
+            <span class="step-result bad">❌ Mission Failure</span>
+            <span class="tokens">tokens: 9824 / total: 39272</span>
+          </summary>
+          <pre class="events">📝 Plan: Reasoning: FAILURE
+FAILURE</pre>
+          
+        </details>
+      
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+  </div>
+  <script>
+  (function () {
+    function setOpenAll(root, selector, open) {
+      root.querySelectorAll(selector).forEach(function (el) {
+        if (el && 'open' in el) el.open = open;
+      });
+    }
+    function areAllOpen(root, selector) {
+      var list = root.querySelectorAll(selector);
+      if (!list.length) return false;
+      for (var i=0;i<list.length;i++) { if (!list[i].open) return false; }
+      return true;
+    }
+    function refreshBtn(btn) {
+      var scope = btn.getAttribute('data-scope');
+      var root = btn.closest(scope === 'mission' ? '.mission-group' : '.mission-submission');
+      if (!root) return;
+      var allOpen = scope === 'mission'
+        ? (areAllOpen(root, '.mission-submission') && areAllOpen(root, '.mission-submission .step'))
+        : areAllOpen(root, '.step');
+      btn.textContent = allOpen ? '▲' : '▼';
+      btn.setAttribute('aria-label', allOpen ? 'Collapse' : 'Expand');
+      btn.dataset.open = allOpen ? 'true' : 'false';
+    }
+
+    // Click handler (single toggle)
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest && e.target.closest('button.toggle');
+      if (!btn) return;
+      e.preventDefault(); e.stopPropagation();
+
+      var scope = btn.getAttribute('data-scope');
+      var root = btn.closest(scope === 'mission' ? '.mission-group' : '.mission-submission');
+      if (!root) return;
+
+      var currentlyOpen = btn.dataset.open === 'true';
+      var nextOpen = !currentlyOpen;
+
+      if (scope === 'mission') {
+        root.open = true; // ensure visible
+        setOpenAll(root, '.mission-submission', nextOpen);
+        setOpenAll(root, '.mission-submission .step', nextOpen);
+      } else {
+        root.open = true;
+        setOpenAll(root, '.step', nextOpen);
+      }
+      refreshBtn(btn);
+    }, true);
+
+    // Keep arrows in sync if user toggles details manually
+    document.addEventListener('toggle', function () {
+      document.querySelectorAll('button.toggle').forEach(refreshBtn);
+    }, true);
+
+    // Initial refresh
+    document.querySelectorAll('button.toggle').forEach(refreshBtn);
+  })();
+  </script>
+
+
+</body>
+</html>

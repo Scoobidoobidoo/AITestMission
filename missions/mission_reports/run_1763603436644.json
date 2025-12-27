@@ -1,0 +1,41 @@
+{
+  "runId": "run_1763603436644",
+  "startTime": "2025-11-20T01:50:36.644Z",
+  "endTime": "2025-11-20T01:50:39.782Z",
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-5.1"
+  },
+  "summary": {
+    "totalMissions": 1,
+    "passed": 1,
+    "failed": 0
+  },
+  "missions": [
+    {
+      "missionName": "Welcome Mission!",
+      "submissionType": "mission",
+      "submissionName": "Welcome Mission!",
+      "status": "passed",
+      "steps": [
+        {
+          "turn": 0,
+          "events": [
+            "📝 Plan: Reasoning: SUCCESS",
+            "SUCCESS"
+          ],
+          "result": "✅ Mission Success",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 1042,
+          "totalTokensUsed": 1042,
+          "summary": "Reasoning: SUCCESS",
+          "__recorded": true
+        }
+      ],
+      "stepFile": "/Users/natalie/Desktop/Cursor/missions/tmp/Welcome_Mission__1763603437631_steps.jsonl",
+      "startTime": 1763603439752,
+      "endTime": 1763603439753,
+      "file": "welcome.mission.js"
+    }
+  ]
+}

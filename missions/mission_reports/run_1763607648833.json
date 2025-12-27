@@ -1,0 +1,155 @@
+{
+  "runId": "run_1763607648833",
+  "startTime": "2025-11-20T03:00:48.833Z",
+  "endTime": "2025-11-20T03:01:53.569Z",
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-5.1"
+  },
+  "summary": {
+    "totalMissions": 1,
+    "passed": 0,
+    "failed": 1
+  },
+  "missions": [
+    {
+      "missionName": "Welcome Mission!",
+      "submissionType": "mission",
+      "submissionName": "Welcome Mission!",
+      "status": "failed",
+      "steps": [
+        {
+          "turn": 0,
+          "events": [
+            "📝 Plan: Navigate to https://itrak365qa.azurewebsites.net",
+            "[model] → navigate [object Object]",
+            "[tool ] ← navigate result: ✅ Success",
+            "[tool ] ← navigated to https://login.microsoftonline.com/51062816-7ac1-4f6b-958b-2a1c84460feb/oauth2/authorize?client_id=bd14cf77-9779-4db2-8ce6-c431dbe0dd82&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DVkrEpWI92PdGl0NYp1lVgdV-On8SHxwoEZtIWEL_riOijk-UN0oK32hEN35ejRj3Is8an_7viyPS9mAUZKnkGMWnoK-ky2pVxTkJz-H24Yp0gjdmz0PDVrKVzkrNUycl&response_mode=form_post&nonce=638992044518105473.MzA2ZTk0N2QtZGJmNS00Njk3LTliMWUtYmZiYWE3ODQyZWEzNmQ0MWZjYWYtNDA3Mi00NTUwLTg4ZTItNjEzMWY1OGRkNjc1&redirect_uri=https%3A%2F%2Fitrak365qa.azurewebsites.net%2F&x-client-SKU=ID_NET472&x-client-ver=8.2.1.0&sso_reload=true"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 1102,
+          "totalTokensUsed": 1102,
+          "summary": "🧭 Navigate to https://itrak365qa.azurewebsites.net",
+          "__recorded": true
+        },
+        {
+          "turn": 1,
+          "events": [
+            "📝 Plan: Inspect DOM (focused extract)",
+            "[model] → get_dom [object Object]",
+            "[tool ] ← get_dom result: ✅ Success",
+            "[tool ] ← <!DOCTYPE html><html class=\"\"><head>\n    <title>Sign in to your account</title>\n    \n    \n    \n    \n    \n    \n\n\n\n\n    \n    \n    \n    \n\n\n        \n\n    \n\n    \n    \n\n\n \n \n\n\n    \n        \n                \n\n    \n\n\n    \n    \n\n\n    \n\n    \n\n\n\n</head>\n\n<body class=\"cb\">\n    \n    \n\n<div>\n\n\n\n<div></div>\n\n<form name=\"f1\" id=\"i0281\" class=\"provide-min-height\">\n    \n    <div class=\"login-paginated-page\">\n\n\n\n\n    \n        \n        <div id=\"lightboxTemplateContainer\" class=\"provide-min-height\">\n\n<div id=\"lightboxBackgroundContainer\"><div class=\"background-image-holder\">\n    \n\n    \n    <div id=\"backgroundImage\" class=\"background-image ext-background-image\" aria-label=\"Organization background image\"></div>\n        \n    \n</div></div>\n\n\n\n\n<div class=\"outer\">\n    \n\n    <div class=\"template-section main-section\">\n        <div class=\"middle ext-middle\">\n            <div class=\"full-height\">\n\n\n<div class=\"flex-column\">\n    \n\n    \n\n    <div class=\"win-scroll\">\n        <div id=\"lightbox\" class=\"sign-in-box ext-…"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 1428,
+          "totalTokensUsed": 2530,
+          "summary": "🧩 Inspect DOM (focused extract)",
+          "__recorded": true
+        },
+        {
+          "turn": 2,
+          "events": [
+            "📝 Plan: Type \"nataliya.datsyuk@itrak365.com\" into #i0116 → Capture screenshot",
+            "[model] → fill [object Object]",
+            "[tool ] ← fill result: ✅ Success",
+            "[tool ] ← filled via fill",
+            "[model] → screenshot [object Object]",
+            "[tool ] ← screenshot result: ✅ Success",
+            "[tool ] ← Screenshot saved at: ./screenshots/screenshot_2025-11-20T03-01-10-703Z.png",
+            "🖼️ Screenshot captured: ./screenshots/screenshot_2025-11-20T03-01-10-703Z.png"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 4143,
+          "totalTokensUsed": 6673,
+          "summary": "⌨️ Type \"nataliya.datsyuk@itrak365.com\" into #i0116 → 📸 Capture screenshot",
+          "screenshotPath": "./screenshots/screenshot_2025-11-20T03-01-10-703Z.png",
+          "__recorded": true
+        },
+        {
+          "turn": 3,
+          "events": [
+            "📝 Plan: Click element (#idSIButton9)",
+            "[model] → click [object Object]",
+            "[tool ] ← click result: ✅ Success",
+            "[tool ] ← clicked <input type=\"submit\" id=\"idSIButton9\" class=\"win-button button_primary high-cont",
+            "[auto] → Injecting DOM after click...",
+            "[auto] → DOM size after click: 10398 chars"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 4220,
+          "totalTokensUsed": 10893,
+          "summary": "🖱️ Click element (#idSIButton9)",
+          "__recorded": true
+        },
+        {
+          "turn": 4,
+          "events": [
+            "📝 Plan: Type \"Wan34748\" into #i0118",
+            "[model] → fill [object Object]",
+            "[tool ] ← fill result: ✅ Success",
+            "[tool ] ← filled via fill"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 7796,
+          "totalTokensUsed": 18689,
+          "summary": "⌨️ Type \"Wan34748\" into #i0118",
+          "__recorded": true
+        },
+        {
+          "turn": 5,
+          "events": [
+            "📝 Plan: Click element (#idSIButton9)",
+            "[model] → click [object Object]",
+            "[tool ] ← click result: ✅ Success",
+            "[tool ] ← clicked <input type=\"submit\" id=\"idSIButton9\" class=\"win-button button_primary high-cont",
+            "[auto] → Injecting DOM after click...",
+            "[auto] → DOM size after click: 9073 chars"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 7840,
+          "totalTokensUsed": 26529,
+          "summary": "🖱️ Click element (#idSIButton9)",
+          "__recorded": true
+        },
+        {
+          "turn": 6,
+          "events": [
+            "📝 Plan: Inspect DOM (focused extract)",
+            "[model] → get_dom [object Object]",
+            "[tool ] ← get_dom result: ✅ Success",
+            "[tool ] ← <!DOCTYPE html><html class=\"\"><head>\n    <title>Sign in to your account</title>\n    \n    \n    \n    \n    \n    \n\n\n\n\n    \n    \n    \n    \n\n\n        \n\n    \n\n    \n    \n\n\n \n \n\n\n    \n        \n                \n\n    \n\n\n    \n    \n\n    \n\n    \n\n\n</head>\n\n<body class=\"cb\">\n    \n    \n\n<div>\n\n\n\n<form name=\"form\">\n\n    \n    <div>\n\n\n\n\n    \n        \n        <div id=\"lightboxTemplateContainer\">\n\n<div id=\"lightboxBackgroundContainer\"><div class=\"background-image-holder\">\n    \n\n    \n    <div id=\"backgroundImage\" class=\"background-image ext-background-image\" aria-label=\"Organization background image\"></div>\n        \n    \n</div></div>\n\n\n\n\n<div class=\"outer\">\n    \n\n    <div class=\"template-section main-section\">\n        <div class=\"middle ext-middle\">\n            <div class=\"full-height\">\n\n\n<div class=\"flex-column\">\n    \n\n    \n\n    <div class=\"win-scroll\">\n        <div id=\"lightbox\" class=\"sign-in-box ext-sign-in-box\">\n\n            \n\n        <div class=\"lightbox-cover\"></div>\n\n        \n\n        <div>\n         …"
+          ],
+          "result": "✅ Passed",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 11148,
+          "totalTokensUsed": 36575,
+          "summary": "🧩 Inspect DOM (focused extract)",
+          "__recorded": true
+        },
+        {
+          "turn": 7,
+          "events": [
+            "📝 Plan: Reasoning: FAILURE",
+            "FAILURE"
+          ],
+          "result": "❌ Mission Failure",
+          "missionName": "Welcome Mission!",
+          "tokensUsed": 14369,
+          "totalTokensUsed": 50944,
+          "summary": "Reasoning: FAILURE",
+          "__recorded": true
+        }
+      ],
+      "stepFile": "/Users/natalie/Desktop/Cursor/missions/tmp/Welcome_Mission__1763607649658_steps.jsonl",
+      "startTime": 1763607713531,
+      "endTime": 1763607713532,
+      "file": "itrak.mission.js"
+    }
+  ]
+}
